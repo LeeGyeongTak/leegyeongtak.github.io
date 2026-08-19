@@ -11,7 +11,7 @@
   --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
 
   --nav-w: 220px;
-  --gutter: clamp(24px, 6vw, 96px);
+  --gutter: clamp(28px, 6vw, 96px);
   --measure: 640px;
 }
 
@@ -92,7 +92,7 @@ ol,ul{ margin:0; padding:0; list-style:none; }
 main{ position:relative; z-index:1; margin-left:var(--nav-w); }
 
 .section{
-  padding:96px var(--gutter) 8px;
+  padding:72px var(--gutter) 8px;
   max-width:calc(var(--measure) + var(--gutter));
 }
 .section h2{
@@ -118,9 +118,8 @@ main{ position:relative; z-index:1; margin-left:var(--nav-w); }
 .hero{
   position:relative; z-index:1;
   margin-left:var(--nav-w);
-  min-height:92vh;
-  display:flex; flex-direction:column; justify-content:center;
-  padding:56px var(--gutter);
+  display:flex; flex-direction:column; justify-content:flex-start;
+  padding:clamp(56px, 12vh, 120px) var(--gutter) clamp(48px, 8vh, 80px);
 }
 .hero__inner{
   display:flex;
@@ -285,7 +284,7 @@ main{ position:relative; z-index:1; margin-left:var(--nav-w); }
   }
   .sidenav.is-open{ transform:translateX(0); }
   main, .hero{ margin-left:0; }
-  .hero{ min-height:70vh; padding-top:48px; }
+  .hero{ padding-top:88px; }
   .hero__inner{ flex-direction:column-reverse; align-items:flex-start; gap:32px; }
   .hero__portrait{ width:min(180px, 40vw); }
   .spec, .pubs__item, .timeline li{ grid-template-columns:1fr; gap:6px; }
