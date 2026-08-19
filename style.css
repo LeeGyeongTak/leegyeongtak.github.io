@@ -124,12 +124,12 @@ main{ position:relative; z-index:1; margin-left:var(--nav-w); }
 }
 .hero__inner{
   display:flex;
-  align-items:center;
-  gap:clamp(40px, 6vw, 88px);
+  align-items:flex-start;
+  gap:clamp(24px, 4vw, 40px);
 }
 .hero__portrait{
   flex:0 0 auto;
-  width:clamp(180px, 22vw, 260px);
+  width:clamp(96px, 9vw, 120px);
   margin:0;
 }
 .hero__portrait img{
