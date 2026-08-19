@@ -4,7 +4,7 @@
   --ink-soft:   #767C82;
   --ink-faint:  #A7ACB0;
   --accent:     #A9702E;
-  --hairline:   #E7E6E1;
+  --hairline:   #D9D8D1;
 
   --font-display: 'Fraunces', Georgia, serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
@@ -190,7 +190,7 @@ main{ position:relative; z-index:1; margin-left:var(--nav-w); }
 /* ============ TIMELINE ============ */
 .timeline li{
   display:grid; grid-template-columns:110px 1fr; gap:28px;
-  padding:22px 0;
+  padding:18px 0;
   border-top:1px solid var(--hairline);
 }
 .timeline li:last-child{ padding-bottom:0; }
@@ -207,7 +207,7 @@ main{ position:relative; z-index:1; margin-left:var(--nav-w); }
 .pubs{ margin-bottom:8px; }
 .pubs__item{
   display:grid; grid-template-columns:64px 1fr; gap:28px;
-  padding:26px 0;
+  padding:22px 0;
   border-top:1px solid var(--hairline);
 }
 .pubs__year{
