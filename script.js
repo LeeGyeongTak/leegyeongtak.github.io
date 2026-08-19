@@ -66,14 +66,28 @@ document.getElementById('year').textContent = new Date().getFullYear();
 // ---------- nav toggle (mobile) ----------
 const navToggle = document.getElementById('navToggle');
 const sidenav = document.getElementById('sidenav');
-navToggle.addEventListener('click', () => {
-  const open = sidenav.classList.toggle('is-open');
-  navToggle.setAttribute('aria-expanded', open);
-});
-sidenav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+const navBackdrop = document.getElementById('navBackdrop');
+
+function closeNav() {
   sidenav.classList.remove('is-open');
+  navBackdrop.classList.remove('is-open');
   navToggle.setAttribute('aria-expanded', 'false');
-}));
+  document.body.style.overflow = '';
+}
+function openNav() {
+  sidenav.classList.add('is-open');
+  navBackdrop.classList.add('is-open');
+  navToggle.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+}
+navToggle.addEventListener('click', () => {
+  sidenav.classList.contains('is-open') ? closeNav() : openNav();
+});
+navBackdrop.addEventListener('click', closeNav);
+sidenav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeNav();
+});
 
 // ---------- active section highlight ----------
 const sections = document.querySelectorAll('main .section, main .hero');
@@ -146,4 +160,24 @@ sections.forEach(s => observer.observe(s));
     dot.style.transition = 'opacity .5s ease 1.4s';
     requestAnimationFrame(() => { dot.style.opacity = '1'; });
   }
+})();
+
+// ---------- scroll reveal for sections ----------
+(function revealOnScroll() {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const targets = document.querySelectorAll('main .section');
+  if (prefersReducedMotion) {
+    targets.forEach(t => t.classList.add('is-visible'));
+    return;
+  }
+  targets.forEach(t => t.classList.add('reveal'));
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+  targets.forEach(t => io.observe(t));
 })();
