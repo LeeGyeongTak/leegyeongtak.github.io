@@ -6,9 +6,11 @@
   --accent:     #A9702E;
   --hairline:   #D9D8D1;
 
+  /* Fraunces = the name only (signature). Source Serif = everything you read.
+     Plex Mono = data only: years, labels, identifiers. */
   --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Source Serif 4', Georgia, 'Times New Roman', serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
-  --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
 
   --nav-w: 200px;
   --nav-gap: clamp(40px, 5vw, 72px);
@@ -24,12 +26,14 @@ body{
   background:var(--paper);
   color:var(--ink);
   font-family:var(--font-body);
-  font-size:16px;
-  line-height:1.65;
+  font-size:17px;
+  line-height:1.6;
+  font-optical-sizing:auto;
   -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
 }
 a{ color:inherit; }
-h1,h2,h3{ font-family:var(--font-display); font-weight:500; margin:0; }
+h1,h2,h3{ font-family:var(--font-body); font-weight:600; margin:0; }
 p{ margin:0; }
 ol,ul{ margin:0; padding:0; list-style:none; }
 
@@ -101,7 +105,7 @@ ol,ul{ margin:0; padding:0; list-style:none; }
 .sidenav__list a{
   display:block;
   text-decoration:none; color:var(--ink-faint);
-  font-size:.88rem;
+  font-size:.95rem;
   letter-spacing:.01em;
   padding:6px 0;
   transition:color .2s ease;
@@ -127,10 +131,11 @@ main{
 
 .section{ padding:72px 0 8px; }
 .section h2{
-  font-size:1.15rem;
-  font-weight:500;
-  letter-spacing:.01em;
-  margin-bottom:40px;
+  font-size:clamp(1.4rem, 2vw, 1.6rem);
+  font-weight:600;
+  letter-spacing:-.012em;
+  line-height:1.2;
+  margin-bottom:36px;
   color:var(--ink);
 }
 
@@ -187,29 +192,31 @@ main{
   text-transform:uppercase; color:var(--ink-faint); margin-bottom:22px;
 }
 .hero h1{
-  font-size:clamp(2.4rem, 5vw, 3.6rem);
+  font-family:var(--font-display);
+  font-size:clamp(2.4rem, 5vw, 3.5rem);
   font-weight:600;
-  line-height:1.08;
-  letter-spacing:-.01em;
+  line-height:1.06;
+  letter-spacing:-.025em;
   color:var(--ink);
-  margin-bottom:24px;
+  margin-bottom:20px;
 }
 .hero__role{
-  font-family:var(--font-mono);
-  font-size:.86rem; line-height:1.7;
+  font-size:1rem; line-height:1.55;
   color:var(--ink-soft);
-  margin-bottom:32px;
+  margin-bottom:30px;
+  max-width:44ch;
 }
 .hero__thesis{
-  font-size:1.08rem; line-height:1.7;
-  max-width:52ch;
+  font-size:1.16rem; line-height:1.62;
+  max-width:50ch;
   color:var(--ink);
-  margin-bottom:40px;
+  margin-bottom:36px;
+  text-wrap:pretty;
 }
 .hero__links{ display:flex; flex-wrap:wrap; gap:12px 28px; }
 .hero__links a{
   position:relative;
-  font-family:var(--font-mono); font-size:.8rem;
+  font-family:var(--font-mono); font-size:.82rem;
   text-decoration:none; color:var(--ink-soft);
   transition:color .2s ease;
 }
@@ -240,7 +247,7 @@ main{
   text-transform:uppercase; color:var(--ink-faint);
   padding-top:2px;
 }
-.spec__value{ font-size:.98rem; line-height:1.6; color:var(--ink); }
+.spec__value{ font-size:1.03rem; line-height:1.58; color:var(--ink); }
 
 /* ============ TIMELINE ============ */
 .timeline li{
@@ -252,11 +259,11 @@ main{
 .timeline li:hover{ padding-left:10px; border-color:var(--accent); }
 .timeline li:last-child{ padding-bottom:0; }
 .timeline__year{
-  font-family:var(--font-mono); font-size:.8rem; color:var(--ink-faint);
+  font-family:var(--font-mono); font-size:.78rem; color:var(--ink-faint);
   padding-top:2px;
 }
-.timeline__title{ font-weight:500; margin-bottom:4px; line-height:1.4; }
-.timeline__meta{ color:var(--ink-soft); font-size:.9rem; line-height:1.55; }
+.timeline__title{ font-weight:600; margin-bottom:4px; line-height:1.4; }
+.timeline__meta{ color:var(--ink-soft); font-size:.96rem; line-height:1.5; }
 .timeline--tight li{ padding:16px 0; }
 .timeline--tight{ margin-bottom:32px; }
 
@@ -270,18 +277,18 @@ main{
 }
 .pubs__item:hover{ padding-left:10px; border-color:var(--accent); }
 .pubs__year{
-  font-family:var(--font-mono); font-size:.8rem; color:var(--ink-faint);
+  font-family:var(--font-mono); font-size:.78rem; color:var(--ink-faint);
   padding-top:2px;
 }
-.pubs__text{ font-size:.98rem; line-height:1.6; margin-bottom:7px; color:var(--ink); }
-.pubs__venue{ font-size:.85rem; color:var(--ink-soft); font-style:italic; }
+.pubs__text{ font-size:1.03rem; line-height:1.55; margin-bottom:7px; color:var(--ink); }
+.pubs__venue{ font-size:.92rem; color:var(--ink-soft); font-style:italic; }
 .pubs__venue span{ font-weight:500; font-style:normal; }
 
 .pubs--plain{ margin-bottom:32px; }
 .pubs__plain-item{
   padding:16px 0;
   border-top:1px solid var(--hairline);
-  font-size:.94rem; color:var(--ink-soft); line-height:1.6;
+  font-size:1rem; color:var(--ink-soft); line-height:1.55;
 }
 
 /* ============ PROJECTS ============ */
@@ -292,9 +299,9 @@ main{
 }
 .project:hover{ padding-left:10px; border-color:var(--accent); }
 .project__year{ font-family:var(--font-mono); font-size:.76rem; color:var(--ink-faint); margin-bottom:10px; }
-.project__title{ font-weight:500; margin-bottom:6px; line-height:1.4; }
-.project__org{ font-size:.85rem; color:var(--ink-faint); margin-bottom:10px; }
-.project__task{ font-size:.9rem; line-height:1.6; color:var(--ink-soft); }
+.project__title{ font-weight:600; margin-bottom:6px; line-height:1.4; }
+.project__org{ font-size:.92rem; color:var(--ink-faint); margin-bottom:10px; }
+.project__task{ font-size:.96rem; line-height:1.55; color:var(--ink-soft); }
 
 /* ============ CONTACT ============ */
 .section--contact{ padding-bottom:48px; }
